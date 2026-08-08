@@ -1,0 +1,94 @@
+# ──────────────────────────────────────────────────────────────
+# .okf.config.yaml — OKF demo configuration
+# ──────────────────────────────────────────────────────────────
+# This config extends the default taxonomy with two demo-only
+# types (Glossary, Pattern) to show that the taxonomy is
+# configurable. Everything else follows the OKF v0.1 contract.
+# ──────────────────────────────────────────────────────────────
+
+types:
+  valid:
+    - System
+    - Agent
+    - Decision
+    - Plan
+    - Project
+    - Insight
+    - Framework
+    - Lesson
+    - Tool
+    - Spec
+    - Skill
+    - Workflow
+    - Criterion
+    - Session
+    - Research
+    - Glossary
+    - Pattern
+    - Map
+
+  cyber:
+    - System
+    - Agent
+    - Decision
+    - Plan
+    - Project
+    - Insight
+
+  excluded_cyber:
+    - Framework
+    - Lesson
+    - Tool
+    - Spec
+    - Glossary
+    - Pattern
+    - Map
+
+  directory:
+    System: system
+    Agent: agents
+    Decision: decisions
+    Plan: plans
+    Project: projects
+    Insight: insights
+    Framework: frameworks
+    Lesson: lessons
+    Tool: specs
+    Spec: specs
+    Skill: skills
+    Workflow: workflows
+    Criterion: criteria
+    Session: sessions
+    Research: research
+    Glossary: glossary
+    Pattern: patterns
+    Map: maps
+
+# ── Health smoke test ────────────────────────────────────────
+# The health check probes a known concept with traverse + read.
+# Point this at a concept that exists in THIS demo vault.
+health:
+  smoke_entry_point: frameworks/cybernetic-graph
+
+# ── Staleness Thresholds ─────────────────────────────────────
+stale:
+  timestamp_days: 90
+  proposed_days: 30
+  no_commits_days: 180
+  checkbox_ratio: 0.7
+  problem_patterns:
+    - \bno\s+(longer|working|available|implemented|connected|stored|notified)\b
+    - \bbroken\b
+    - \bfalse\b
+    - \bmissing\b
+    - \bnot\s+yet\b
+    - \bpending\b
+    - \bincomplete\b
+    - \bplaceholder\b
+    - \bclaims?\s+false\b
+    - \b404\b
+    - \bno\s+metrics\b
+
+# ── Cybernetic Review Cycle ──────────────────────────────────
+cyber:
+  review_days: 60

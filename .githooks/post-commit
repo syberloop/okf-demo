@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# post-commit — regenerate indexes after a successful commit
+# Requires: python3 -m cli (from the mcp-okf package, installed via pip)
+set -euo pipefail
+export OKF_VAULT="$(git rev-parse --show-toplevel)"
+
+echo "🔄 [okf] post-commit: regenerating indexes..."
+python3 -m cli index 2>/dev/null || true

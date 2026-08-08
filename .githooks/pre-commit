@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# pre-commit — validate + index staged concepts
+# Requires: python3 -m cli (from the mcp-okf package, installed via pip)
+set -euo pipefail
+export OKF_VAULT="$(git rev-parse --show-toplevel)"
+
+echo "🔍 [okf] validating staged concepts..."
+python3 -m cli validate
+
+echo "🔄 [okf] regenerating indexes..."
+python3 -m cli index
+
+echo "✅ [okf] pre-commit checks passed"
