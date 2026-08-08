@@ -1,0 +1,5 @@
+# OKF demo — ignore local state
+.obsidian/
+event_log.jsonl
+*.log
+.DS_Store

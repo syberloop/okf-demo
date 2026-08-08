@@ -10,4 +10,7 @@ python3 -m cli validate
 echo "🔄 [okf] regenerating indexes..."
 python3 -m cli index
 
+echo "📦 [okf] staging regenerated indexes..."
+git add -A
+
 echo "✅ [okf] pre-commit checks passed"
