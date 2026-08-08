@@ -74,6 +74,25 @@ python3 -m cli stale
 The graph explains itself: `maps/entity-map` shows how the concepts
 connect, and `glossary/loop-vocabulary` defines the loop vocabulary.
 
+## Watch the agent think — Cognitive Trace
+
+The demo ships with a visualization layer: the [Cognitive Trace](https://github.com/syberloop/cognitive-trace) Obsidian plugin animates the native graph in real time as an agent navigates the vault. Nodes light up, edges pulse, sessions replay.
+
+```bash
+# From the repo root (requires npm + an Obsidian vault):
+mkdir -p .obsidian/plugins
+git clone --depth 1 https://github.com/syberloop/cognitive-trace.git .obsidian/plugins/cognitive-trace
+cd .obsidian/plugins/cognitive-trace
+npm install && npm run build
+```
+
+Then open this folder as an Obsidian vault (or copy it into an existing
+one), enable the **Cognitive Trace** plugin in Settings → Community
+Plugins, and run an agent session against the vault. The graph shows the
+agent's traversal, reads, and decisions as they happen.
+
+> Prefer the one-command path: `curl -fsSL https://syberloop.com/install.sh | bash -- --with-cognitive-trace` clones the plugin, builds it, and wires everything up.
+
 ## How the loop closes itself
 
 1. Every concept carries a `cyber` block when it acts in the world:

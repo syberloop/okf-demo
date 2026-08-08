@@ -1,0 +1,17 @@
+# Dependencies
+node_modules/
+
+# NOTE: main.js IS VERSIONED in this demo (decision B — plugin works
+# out of the box without npm). Rebuild with `npm run build` when syncing
+# from the upstream repo.
+
+# Runtime trace data (agent events, not code)
+event_log.jsonl
+*.db
+*.db-journal
+
+# User config in Obsidian
+data.json
+
+# System
+.DS_Store

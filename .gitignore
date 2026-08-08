@@ -1,5 +1,9 @@
 # OKF demo — ignore local state
-.obsidian/
-event_log.jsonl
+# Cognitive Trace plugin is VERSIONED (main.js built + source).
+# Only runtime data is ignored.
+.obsidian/plugins/cognitive-trace/event_log.jsonl
+.obsidian/plugins/cognitive-trace/node_modules/
+.obsidian/plugins/cognitive-trace/data.json
 *.log
 .DS_Store
+workspace.json
