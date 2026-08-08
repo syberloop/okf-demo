@@ -2,6 +2,7 @@
 
 ## 2026-08-08
 
+* `d9781ff` — ci: restore GitHub Actions — health/review/stale workflows (token con scope workflow)
 * `4fd67fc` — chore: excluir workflows temporalmente — push requiere scope workflow del token
 * `8e0bc99` — feat: grafo completo — 20 conceptos, 40 edges, health 9/9
 * `cff4a99` — docs: README quickstart + GitHub Actions (health/review/stale) + gitignore
