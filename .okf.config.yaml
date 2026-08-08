@@ -45,21 +45,13 @@ types:
     - Map
 
   directory:
-    System: system
-    Agent: agents
     Decision: decisions
     Plan: plans
     Project: projects
     Insight: insights
     Framework: frameworks
-    Lesson: lessons
-    Tool: specs
     Spec: specs
-    Skill: skills
-    Workflow: workflows
     Criterion: criteria
-    Session: sessions
-    Research: research
     Glossary: glossary
     Pattern: patterns
     Map: maps
@@ -88,6 +80,22 @@ stale:
     - \bclaims?\s+false\b
     - \b404\b
     - \bno\s+metrics\b
+
+# ── Exclusions ────────────────────────────────────────────────
+# Files and directories that are part of the repo but not concepts.
+exclude:
+  files:
+    - README.md
+    - .okf.config.yaml
+    - index.md
+    - log.md
+    - dashboard.md
+    - AGENTS.md
+  dirs:
+    - .git
+    - .github
+    - .githooks
+    - scripts
 
 # ── Cybernetic Review Cycle ──────────────────────────────────
 cyber:
