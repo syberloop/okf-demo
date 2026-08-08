@@ -17,13 +17,10 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - name: Install mcp-okf CLI
+      - name: Install mcp-okf CLI from repo
         run: |
-          pip install --quiet mcp-okf || {
-            echo "mcp-okf not on PyPI yet — installing from repo";
-            git clone --depth 1 https://github.com/syberloop/mcp-okf /tmp/mcp-okf
-            pip install --quiet /tmp/mcp-okf
-          }
+          git clone --depth 1 https://github.com/syberloop/mcp-okf /tmp/mcp-okf
+          pip install --quiet /tmp/mcp-okf
       - name: Install hooks
         run: ./scripts/install-hooks.sh
       - name: Run health check
