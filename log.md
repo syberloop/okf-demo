@@ -2,6 +2,7 @@
 
 ## 2026-08-08
 
+* `093ff0d` — feat: cognitive-trace activo por defecto — community-plugins.json lista el plugin
 * `42df14c` — feat: Cognitive Trace incluido en el demo — plugin builddeado versionado
 * `1fb9dce` — ci: clonar mcp-okf directo (no está en PyPI) — pyyaml viene con pip install del repo
 * `46f888e` — ci: OKF_VAULT apunta al workspace del runner — fix vault not found
