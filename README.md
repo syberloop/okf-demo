@@ -98,7 +98,8 @@ agent's traversal, reads, and decisions as they happen.
 1. Every concept carries a `cyber` block when it acts in the world:
    sensor → target_metric → outcome → review_on.
 2. The pre-commit hook validates frontmatter and regenerates indexes on
-   every commit; the post-commit hook keeps the graph healthy.
+   every commit; the pre-commit hook stages the regenerated indexes, so
+   the working tree stays clean after every commit.
 3. `review` lists concepts whose `review_on` has passed; their outcomes
    are recorded — `success`, `failure`, or `pending`.
 4. A reverted decision is **retired**: still visible for provenance, no
