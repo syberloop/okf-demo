@@ -95,6 +95,7 @@ exclude:
     - .git
     - .github
     - .githooks
+    - node_modules
     - scripts
 
 # ── Cybernetic Review Cycle ──────────────────────────────────

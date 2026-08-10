@@ -2,6 +2,7 @@
 
 ## 2026-08-08
 
+* `f50ac0f` — docs: README — el pre-commit stagea índices, tree limpio tras commit
 * `58d21d6` — fix: eliminar post-commit hook — el pre-commit stagea índices antes del commit
 * `093ff0d` — feat: cognitive-trace activo por defecto — community-plugins.json lista el plugin
 * `42df14c` — feat: Cognitive Trace incluido en el demo — plugin builddeado versionado
