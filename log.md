@@ -2,6 +2,7 @@
 
 ## 2026-09-10
 
+* `c7b41d9` — chore(plugin): sincronizar Cognitive Trace con upstream c024d24 — los traverse/read del CLI (params.target) ya iluminan nodos y aparecen en el timeline
 * `8c9a45f` — docs(index): descripcion de directorio en los 10 indices + excluir .obsidian del indexer
 * `44232a3` — chore(plugin): sincronizar Cognitive Trace con upstream 2b39120 (DashboardView, tabla Conceptos, Session Diff)
 ## 2026-08-10
