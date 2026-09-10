@@ -398,3 +398,573 @@
     text-align: center;
     font-family: var(--font-text);
 }
+
+/* ── Dashboard OKF (Fase 2: tarjetas KPI + Fase 3: capas) ── */
+
+.cognitive-trace-dashboard {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    font-size: 11px;
+    overflow-y: auto;
+}
+
+.dashboard-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--background-modifier-border);
+    position: sticky;
+    top: 0;
+    background: var(--background-primary);
+    z-index: 2;
+}
+
+.dashboard-header-left {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+}
+
+.dashboard-header-title {
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--text-normal);
+}
+
+.dashboard-status-label {
+    font-size: 9px;
+    color: var(--text-faint);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-left: 4px;
+    margin-right: auto;
+}
+
+.dashboard-refresh-btn {
+    padding: 2px 10px;
+    font-size: 12px;
+    font-family: var(--font-monospace);
+    background: transparent;
+    border: 1px solid var(--background-modifier-border);
+    border-radius: 4px;
+    cursor: pointer;
+    color: var(--text-faint);
+}
+.dashboard-refresh-btn:hover { border-color: var(--text-muted); color: var(--text-muted); }
+
+/* Selector de capas */
+
+.dashboard-layers {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    padding: 8px 12px 0;
+}
+
+.dashboard-layer-chip {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 10px;
+    font-size: 10px;
+    font-family: var(--font-monospace);
+    border: 1px solid var(--background-modifier-border);
+    border-radius: 14px;
+    background: var(--background-primary);
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+.dashboard-layer-chip:hover {
+    border-color: var(--text-muted);
+    color: var(--text-normal);
+}
+.dashboard-layer-chip.dashboard-layer-active {
+    border-color: var(--text-accent);
+    color: var(--text-accent);
+    background: color-mix(in srgb, var(--text-accent) 12%, var(--background-primary));
+    font-weight: 600;
+}
+.dashboard-layer-chip.dashboard-layer-disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+.dashboard-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 6px 12px;
+    font-size: 9px;
+    color: var(--text-faint);
+    border-bottom: 1px solid var(--background-modifier-border);
+}
+
+.dashboard-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* Comparación de sesiones en la leyenda Session Diff: resalta qué sesiones
+   se están comparando (A vs B con conteo de nodos navegados). */
+.dashboard-legend-item.dashboard-sessiondiff-cmp {
+    color: var(--text-normal);
+    font-weight: 600;
+    margin-right: 4px;
+}
+
+.dashboard-legend-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+/* Barra apilada de salud del vault (FRESCO/ATENCION/STALE) */
+
+.dashboard-healthbar {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 10px 16px 0;
+}
+
+.dashboard-healthbar-track {
+    display: flex;
+    gap: 1px;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    background: var(--background-modifier-border);
+}
+
+.dashboard-healthbar-seg {
+    min-width: 0;
+    transition: flex-grow 0.3s;
+}
+
+.dashboard-healthbar-fresco { background: var(--color-green, #2ECC40); }
+.dashboard-healthbar-atencion { background: var(--color-yellow, #FFDC00); }
+.dashboard-healthbar-stale { background: var(--color-red, #FF4136); }
+
+.dashboard-healthbar-label {
+    font-size: 9px;
+    color: var(--text-faint);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Tarjetas KPI */
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    padding: 16px;
+}
+@media (max-width: 700px) {
+    .dashboard-grid { grid-template-columns: 1fr; }
+}
+
+.dashboard-card {
+    background: var(--background-secondary);
+    border-radius: 8px;
+    padding: 16px;
+    border: 1px solid var(--background-modifier-border);
+    min-width: 0;
+}
+
+/* Tarjetas navegables: click → pestaña Conceptos con filtro coherente */
+.dashboard-card-clickable {
+    cursor: pointer;
+    transition: border-color 0.15s, background 0.15s;
+}
+.dashboard-card-clickable:hover {
+    border-color: var(--text-accent);
+    background: var(--background-modifier-hover);
+}
+
+.dashboard-card-chevron {
+    margin-left: 4px;
+    font-size: 12px;
+    line-height: 1;
+    color: var(--text-faint);
+    transition: color 0.15s;
+}
+.dashboard-card-clickable:hover .dashboard-card-chevron {
+    color: var(--text-accent);
+}
+
+.dashboard-card-head {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.dashboard-card-icon { font-size: 12px; }
+
+.dashboard-card-title {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+}
+
+.kpi-trend {
+    margin-left: auto;
+    font-size: 12px;
+}
+.kpi-trend-up { color: var(--color-green); }
+.kpi-trend-down { color: var(--color-red); }
+.kpi-trend-flat { color: var(--text-faint); }
+
+.dashboard-card .kpi-value {
+    font-size: 2em;
+    font-weight: 700;
+    color: var(--text-normal);
+    margin-top: 6px;
+    font-variant-numeric: tabular-nums;
+}
+
+/* Color del KPI por umbral de salud (misma paleta que las flechas de tendencia) */
+.dashboard-card .kpi-value.kpi-value-ok { color: var(--color-green, #2ECC40); }
+.dashboard-card .kpi-value.kpi-value-warn { color: var(--color-yellow, #FFDC00); }
+.dashboard-card .kpi-value.kpi-value-bad { color: var(--color-red, #FF4136); }
+
+.dashboard-card .kpi-sparkline {
+    width: 100%;
+    height: 40px;
+    margin-top: 8px;
+    display: block;
+}
+
+.dashboard-card .kpi-details {
+    font-size: 0.85em;
+    color: var(--text-muted);
+    margin-top: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.kpi-detail-row {
+    display: flex;
+    gap: 6px;
+    min-width: 0;
+}
+
+.kpi-detail-label {
+    color: var(--text-faint);
+    flex-shrink: 0;
+}
+
+.kpi-detail-value {
+    color: var(--text-muted);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.dashboard-empty {
+    padding: 24px 16px;
+    color: var(--text-muted);
+    font-size: 11px;
+    text-align: center;
+    font-family: var(--font-text);
+}
+
+.dashboard-empty-detail {
+    margin-top: 4px;
+    font-size: 9px;
+    color: var(--text-faint);
+}
+
+/* ── Pestañas del dashboard (Fase 4: Conceptos) ── */
+
+.dashboard-tabs {
+    display: flex;
+    gap: 5px;
+    padding: 8px 12px 0;
+    border-bottom: 1px solid var(--background-modifier-border);
+}
+
+.dashboard-tab-chip {
+    padding: 4px 12px;
+    font-size: 10px;
+    font-family: var(--font-monospace);
+    border: 1px solid var(--background-modifier-border);
+    border-radius: 14px;
+    background: var(--background-primary);
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+.dashboard-tab-chip:hover {
+    border-color: var(--text-muted);
+    color: var(--text-normal);
+}
+.dashboard-tab-chip.dashboard-tab-active {
+    border-color: var(--text-accent);
+    color: var(--text-accent);
+    background: color-mix(in srgb, var(--text-accent) 12%, var(--background-primary));
+    font-weight: 600;
+}
+
+/* Toolbar de la tabla */
+
+.dashboard-concept-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--background-modifier-border);
+}
+
+.dashboard-concept-search {
+    flex: 1;
+    min-width: 140px;
+    padding: 4px 10px;
+    font-size: 10px;
+    font-family: var(--font-monospace);
+    background: var(--background-primary);
+    border: 1px solid var(--background-modifier-border);
+    border-radius: 14px;
+    color: var(--text-normal);
+}
+.dashboard-concept-search:focus {
+    border-color: var(--text-accent);
+    outline: none;
+}
+.dashboard-concept-search::placeholder {
+    color: var(--text-faint);
+}
+
+.dashboard-concept-type-filter,
+.dashboard-concept-state-filter,
+.dashboard-concept-date-filter {
+    padding: 4px 8px;
+    font-size: 10px;
+    font-family: var(--font-monospace);
+    background: var(--background-primary);
+    border: 1px solid var(--background-modifier-border);
+    border-radius: 14px;
+    color: var(--text-muted);
+    cursor: pointer;
+}
+.dashboard-concept-type-filter:hover,
+.dashboard-concept-state-filter:hover,
+.dashboard-concept-date-filter:hover {
+    border-color: var(--text-muted);
+}
+
+/* Chips de conteos por estado (sobre la tabla) */
+
+.dashboard-concept-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    padding: 8px 12px 0;
+}
+
+.dashboard-concept-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 3px 10px;
+    font-size: 10px;
+    font-family: var(--font-monospace);
+    border: 1px solid var(--background-modifier-border);
+    border-radius: 14px;
+    background: var(--background-primary);
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+.dashboard-concept-chip:hover {
+    border-color: var(--text-muted);
+    color: var(--text-normal);
+}
+.dashboard-concept-chip.dashboard-chip-active {
+    border-color: var(--text-accent);
+    color: var(--text-accent);
+    background: color-mix(in srgb, var(--text-accent) 12%, var(--background-primary));
+    font-weight: 600;
+}
+
+.dashboard-chip-count {
+    font-size: 9px;
+    color: var(--text-faint);
+    background: var(--background-modifier-hover);
+    border-radius: 8px;
+    padding: 0 5px;
+    min-width: 14px;
+    text-align: center;
+    font-variant-numeric: tabular-nums;
+}
+
+/* Tabla */
+
+.dashboard-concept-content {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+.dashboard-concept-table-wrap {
+    overflow-y: auto;
+}
+
+.dashboard-concept-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 11px;
+}
+
+.dashboard-concept-head th {
+    text-align: left;
+    font-size: 9px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-faint);
+    padding: 6px 12px;
+    border-bottom: 1px solid var(--background-modifier-border);
+    white-space: nowrap;
+}
+
+/* Headers ordenables: botón transparente que hereda el estilo del th */
+.dashboard-concept-head th.dashboard-concept-sortable {
+    padding: 0;
+}
+
+.dashboard-concept-sort-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 6px 12px;
+    font-size: 9px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-family: var(--font-monospace);
+    color: var(--text-faint);
+    background: none;
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
+}
+.dashboard-concept-sort-btn:hover {
+    color: var(--text-muted);
+}
+.dashboard-concept-sort-btn.dashboard-sort-active {
+    color: var(--text-accent);
+}
+
+.dashboard-concept-row {
+    cursor: pointer;
+}
+.dashboard-concept-row:hover {
+    background: var(--background-modifier-hover);
+}
+
+.dashboard-concept-row td {
+    padding: 4px 12px;
+    border-bottom: 1px solid color-mix(in srgb, var(--background-modifier-border) 50%, transparent);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 0;
+    vertical-align: middle;
+}
+
+.dashboard-concept-name {
+    color: var(--text-accent);
+    font-weight: 600;
+}
+.dashboard-concept-row:hover .dashboard-concept-name {
+    color: var(--text-accent-hover);
+}
+
+.dashboard-concept-status {
+    color: var(--text-muted);
+    font-size: 10px;
+    font-family: var(--font-monospace);
+}
+
+.dashboard-concept-updated {
+    color: var(--text-faint);
+    font-size: 10px;
+    font-family: var(--font-monospace);
+    font-variant-numeric: tabular-nums;
+}
+
+/* Badges Cyber / Stale */
+
+.dashboard-cyber-badge,
+.dashboard-stale-badge {
+    display: inline-block;
+    min-width: 16px;
+    text-align: center;
+    border-radius: 8px;
+    padding: 0 6px;
+    background: var(--background-modifier-hover);
+    font-size: 10px;
+    font-family: var(--font-monospace);
+    font-weight: 600;
+}
+
+.dashboard-cyber-success { color: var(--color-green); }
+.dashboard-cyber-pending { color: var(--color-yellow); }
+.dashboard-cyber-failure { color: var(--color-red); }
+.dashboard-cyber-expired { color: var(--color-red); }
+.dashboard-cyber-none { color: var(--text-faint); }
+
+.dashboard-stale-fresco { color: var(--color-green); }
+.dashboard-stale-atencion { color: var(--color-yellow); }
+.dashboard-stale-stale { color: var(--color-red); }
+.dashboard-stale-none { color: var(--text-faint); }
+
+/* Paginación */
+
+.dashboard-pager {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 8px 12px;
+    border-top: 1px solid var(--background-modifier-border);
+}
+
+.dashboard-pager-btn {
+    padding: 2px 10px;
+    font-size: 12px;
+    font-family: var(--font-monospace);
+    background: transparent;
+    border: 1px solid var(--background-modifier-border);
+    border-radius: 4px;
+    color: var(--text-muted);
+    cursor: pointer;
+    line-height: 1;
+    transition: border-color 0.12s, color 0.12s;
+}
+.dashboard-pager-btn:hover:not(.dashboard-pager-disabled) {
+    border-color: var(--text-accent);
+    color: var(--text-accent);
+}
+.dashboard-pager-btn.dashboard-pager-disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.dashboard-pager-label {
+    font-size: 10px;
+    font-family: var(--font-monospace);
+    color: var(--text-muted);
+    font-variant-numeric: tabular-nums;
+    min-width: 90px;
+    text-align: center;
+    user-select: none;
+}

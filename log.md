@@ -1,5 +1,8 @@
 # Update Log
 
+## 2026-08-10
+
+* `0600985` — fix(config): excluir node_modules del health check — npm install del plugin lo contaminaba con .md de dependencias
 ## 2026-08-08
 
 * `f50ac0f` — docs: README — el pre-commit stagea índices, tree limpio tras commit
