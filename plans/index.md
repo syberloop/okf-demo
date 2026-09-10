@@ -1,3 +1,7 @@
+---
+description: "The plan this repo implements: a public, self-contained OKF demo with a curated graph, a deterministic level-2 runtime, and a documented path to level 3."
+---
+
 # Plans
 
 

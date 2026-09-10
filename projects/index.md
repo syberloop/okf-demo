@@ -1,3 +1,7 @@
+---
+description: "The project that ships OKF to the community: the published mcp-okf server, this demo vault as the on-ramp, and the installer that seeds it for new users."
+---
+
 # Projects
 
 

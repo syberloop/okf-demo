@@ -1,3 +1,7 @@
+---
+description: "The theoretical ground of the graph — cybernetics, requisite variety, second-order observation, and typed edges as the ontology that keeps agent reasoning inside the domain."
+---
+
 # Frameworks
 
 

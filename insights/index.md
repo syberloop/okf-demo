@@ -1,3 +1,7 @@
+---
+description: "What the graph concluded by reading itself: markdown as memory is validated, and the level-2 territory — self-correction with measurement — is still vacant."
+---
+
 # Insights
 
 

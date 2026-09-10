@@ -1,3 +1,7 @@
+---
+description: "Where to start reading: the entity map that shows how frameworks ground decisions, decisions apply patterns, and specs implement the format."
+---
+
 # Maps
 
 

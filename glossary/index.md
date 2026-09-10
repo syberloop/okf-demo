@@ -1,3 +1,7 @@
+---
+description: "The vocabulary that makes the control loop concrete: sensor, perception, actuator, outcome, review_on, edge, vault — each term defined in one sentence and linked to the concept that uses it."
+---
+
 # Glossary
 
 

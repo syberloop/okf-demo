@@ -1,3 +1,7 @@
+---
+description: "The tests a concept must pass to enter the graph — what counts as actionable, what earns a cyber block, and what stays descriptive."
+---
+
 # Criteria
 
 

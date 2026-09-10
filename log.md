@@ -1,5 +1,8 @@
 # Update Log
 
+## 2026-09-10
+
+* `44232a3` — chore(plugin): sincronizar Cognitive Trace con upstream 2b39120 (DashboardView, tabla Conceptos, Session Diff)
 ## 2026-08-10
 
 * `0600985` — fix(config): excluir node_modules del health check — npm install del plugin lo contaminaba con .md de dependencias

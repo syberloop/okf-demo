@@ -1,3 +1,7 @@
+---
+description: "Reusable mechanisms extracted from decisions — starting with retirement: a reversed decision stays visible for provenance but stops being served as truth."
+---
+
 # Patterns
 
 

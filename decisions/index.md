@@ -1,3 +1,7 @@
+---
+description: "The rules this demo graph runs on: configurable versus hardcoded, when a cyber block is mandatory, files before ingest, and how a reversed decision retires."
+---
+
 # Decisions
 
 

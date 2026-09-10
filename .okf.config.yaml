@@ -95,6 +95,7 @@ exclude:
     - .git
     - .github
     - .githooks
+    - .obsidian
     - node_modules
     - scripts
 

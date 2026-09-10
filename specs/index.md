@@ -1,3 +1,7 @@
+---
+description: "The formal contracts — the OKF v0.1 format (concepts, frontmatter, links, indexes, logs) and the typed-edge architecture that gives the graph its semantics."
+---
+
 # Specs
 
 
